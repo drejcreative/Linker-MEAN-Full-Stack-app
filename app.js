@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(require('method-override')());
-app.use(express.static(__dirname + '/front/dist'));
+app.use(express.static(__dirname + '/public'));
 app.use(passport.initialize());
 
 app.use(session({ secret: 'develop', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
