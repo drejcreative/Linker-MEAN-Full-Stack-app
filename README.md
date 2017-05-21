@@ -1,31 +1,8 @@
-# ![Node/Express/Mongoose Example App](project-logo.png)
+# Gulp Workflow
+![Project Login](linker.jpg)
+![Project Dashboard](linker1.jpg)
 
-> ### Example Node (Express + Mongoose) codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec.
-
-<a href="https://thinkster.io/tutorials/node-json-api" target="_blank"><img width="454" src="https://raw.githubusercontent.com/gothinkster/realworld/master/media/learn-btn-hr.png" /></a>
-
-This repo is functionality complete — PR's and issues welcome!
-
-# Getting started
-
-To get the Node server running locally:
-
-- Clone this repo
-- `npm install` to install all req'd dependencies
-- `npm run dev` to start the local server
-
-
-# Code Overview
-
-## Dependencies
-
-- [expressjs](https://github.com/expressjs/express) - The server for handling and routing HTTP requests
-- [express-jwt](https://github.com/auth0/express-jwt) - Middleware for validating JWTs for authentication
-- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - For generating JWTs used by authentication
-- [mongoose](https://github.com/Automattic/mongoose) - For modeling and mapping MongoDB data to javascript 
-- [mongoose-unique-validator](https://github.com/blakehaswell/mongoose-unique-validator) - For handling unique validation errors in Mongoose. Mongoose only handles validation at the document level, so a unique index across a collection will throw an excpetion at the driver level. The `mongoose-unique-validator` plugin helps us by formatting the error like a normal mongoose `ValidationError`.
-- [passport](https://github.com/jaredhanson/passport) - For handling user authentication
-- [slug](https://github.com/dodo/node-slug) - For encoding titles into a URL-friendly format
+MEAN stack app. The MEAN stack is MongoDB, Express.js, AngularJS, and Node.js. Because all components of the MEAN stack support programs written in JavaScript, MEAN applications can be written in one language for both server-side and client-side execution environments.
 
 ## Application Structure
 
@@ -33,16 +10,24 @@ To get the Node server running locally:
 - `config/` - This folder contains configuration for passport as well as a central location for configuration/environment variables.
 - `routes/` - This folder contains the route definitions for our API. They contain
 - `models/` - This folder contains the schema definitions for our Mongoose models.
+- `public/` - AngularJS front-end application files with Gulp workflow.
 
-## Error Handling
+##Instructions
 
-In `routes/api/index.js`, we define a error-handling middleware for handling Mongoose's `ValidationError`. This middleware will respond with a 422 status code and format the response to have [error messages the clients can understand](https://github.com/gothinkster/realworld/blob/master/API.md#errors-and-status-codes)
+Make sure you have these installed
+1. [Node.js](www.nodejs.org).
+2. [git](www.git-scm.com).
+3. [MongoDB](https://www.mongodb.com/download-center?jmp=nav#community).
+3. Gulp via the Mac terminal or CMD on a PC > `npm install --global gulp-cli`
 
-## Authentication
+Clone this repository into your local machine using the terminal (mac) or CMD (PC)
+`git clone https://github.com/drejcreative/Gulp-Workflow.git`
 
-Requests are authenticated using the `Authorization` header with a valid JWT. We define two express middlewares in `routes/auth.js` that can be used to authenticate requests. The `required` middleware configures the `express-jwt` middleware using our application's secret and will return a 401 status code if the request cannot be authenticated. The payload of the JWT can then be accessed from `req.payload` in the endpoint. The `optional` middleware configures the `express-jwt` in the same way as `required`, but will *not* return a 401 status code if the request cannot be authenticated.
+CD to the folder with workflows
+Run > `npm install` to install the project dependencies
+Run > `npm install`  in `public` folder to install front-end project dependencies
+Start Mongo locally `C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe` pm PC or
+run > `npm run dev` to start the node server
+run > `gulp` inside `public` folder to start gulp server for front-end
 
-
-<br />
-
-[![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
+For creation of Production ready AngularJS app, please type `gulp build` inside `public` folder, and optimized and minify app will be created inside `dist` folder
