@@ -1,0 +1,13 @@
+.button {
+  padding: 10px;
+  background: $main;
+  border: 1px solid $main;
+  color: $bright;
+  &:hover {
+    background: lighten($main, 5);
+  }
+  &:active {
+    background: darken($main, 5);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.19);
+  }
+}

@@ -1,0 +1,87 @@
+.comments {
+  width: 100%;
+  &__wrap {
+    max-width: $width;
+    margin: 0 auto;
+    padding: 50px 0;
+  }
+}
+
+.comment {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  // text-align: center;
+  background: lighten(#D1DBBD, 15);
+  padding: 40px;
+  &__header {
+    padding: 40px;
+    text-align: center;
+    a {
+      color: $main;
+      text-decoration: none;
+      font-weight: $bold;
+    }
+    &--link {
+      margin-top: 10px;
+      display: block;
+      span { margin-right: 10px; }
+    }
+  }
+
+  &__head {
+    font-size: 12px;
+    margin-left: 12px;
+  }
+
+  &__number {
+    padding: 20px 0;
+    font-weight: $bold;
+    margin-left: auto;
+    &--icon {
+      background: $main;
+      color: $bright;
+      padding: 5px 10px;
+      border-radius: 50%;
+    }
+  }
+
+  &__main {
+    border-bottom: 1px solid #E1E1E1;
+    padding-top: 10px;
+    &--author {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      color: $main;
+      font-weight: $bold;
+      img {
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+    }// End of Author
+    &--name {
+
+    }
+    &--time {
+      font-weight: $regular;
+      font-size: 13px;
+      color: #91AA9D;
+    }
+
+    &--upvotes {
+      margin-left: auto;
+      cursor: pointer;
+      color: $main;
+    }
+
+    &--body {
+      margin-left: 40px;
+      padding: 20px;
+    }
+
+  }
+
+}
