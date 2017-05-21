@@ -1,0 +1,66 @@
+<div class="main">
+  <div class="main__wrap">
+
+    <div class="message" ng-hide="$ctrl.isLoggedIn()">
+      <h3>You need to <a ui-sref="app.login">Log In</a> or <a ui-sref="app.register">Register</a> before you can add a post.</h3>
+    </div>
+    <span class="form">
+      <form class="form__wrap"
+            ng-show="$ctrl.isLoggedIn()"
+            ng-submit="$ctrl.addPost()">
+          <input class="form__text" type="text" placeholder="Title"
+                 ng-model="$ctrl.title"
+                 ng-change="$ctrl.focused=true"
+                 ng-blur="$ctrl.focused=false"><span ng-class="$ctrl.focused ? 'on' : 'off'"
+                                                     class="form__text--focus first">Title</span>
+          </input>
+          <input class="form__link" type="text" placeholder="Link"
+                 ng-model="$ctrl.link"
+                 ng-change="$ctrl.focused1=true"
+                 ng-blur="$ctrl.focused1=false"><span ng-class="$ctrl.focused1 ? 'on' : 'off'"
+                                                     class="form__text--focus secound">link</span>
+          </input>
+          <button class="form__button" type="submit">Post</button>
+      </form>
+    </span>
+
+    <!-- <h1>{{::$ctrl.appName}}</h1> -->
+    <div class="main__post-wrap">
+      <div class="main-post"
+           ng-repeat="post in $ctrl.posts | orderBy: '-upvotes' | limitTo: $ctrl.limit as results">
+           <!-- <span class="main__post_icon-upvote">{{$index + 1}}</span> -->
+           <div class="main-post__tittle">
+             <a ng-show="post.link" href="{{post.link}}" target="_blank">
+                {{post.title}}
+             </a>
+             <span ng-hide="post.link">
+                  {{post.title}}
+             </span>
+           </div>
+           <div class="main-post__author">
+             <span ng-show="post.author">
+               Posted {{post.date | relativeDate }} by <a class="main-post__author--name">{{post.author}}</a>
+             </span>
+           </div>
+           <div class="main-post__footer">
+             <span class="icon-thumbs-o-up main-post__footer--upvotes"
+                   ng-click="$ctrl.incrementUpvotes(post)">
+                  {{post.upvotes}}
+             </span>
+             <a ui-sref="app.posts({ id: post._id })"
+                class="main-post__footer--comments">
+                  <span class="icon-comment"></span>
+                  <span>{{post.comments.length}}</span>
+              </a>
+           </div>
+      </div>
+
+      <div class="show-more"
+           ng-hide="results.length === $ctrl.posts.length">
+        <span ng-click="$ctrl.limit = $ctrl.limit +4">Show More</span>
+      </div>
+
+    </div><!-- main__post-wrap -->
+
+  </div>
+</div>
