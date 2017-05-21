@@ -35,7 +35,7 @@ if (!isProduction) {
 if(isProduction){
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect('mongodb://localhost/news');
+  mongoose.connect('mongodb://dartxxq:qqq1qqq1@ds149511.mlab.com:49511/linker-app');
   mongoose.set('debug', true);
 }
 
