@@ -14,7 +14,7 @@ node_modules/
 public/node_modules/
 public/lib/
 app/tests/coverage/
-public/bower-components/
+public/bower_components/
 .idea/
 coverage/
 .coveralls.yml
