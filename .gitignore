@@ -13,7 +13,7 @@ node_modules/
 public/node_modules/
 public/lib/
 app/tests/coverage/
-node_modules/.bower-*/
+public/bower-*/
 .idea/
 coverage/
 .coveralls.yml
