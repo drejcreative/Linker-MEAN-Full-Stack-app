@@ -9,11 +9,12 @@ Thumbs.db
 # ==========================
 .nodemonignore
 .sass-cache/
+public/sass-cache/
 node_modules/
 public/node_modules/
 public/lib/
 app/tests/coverage/
-public/bower-*/
+public/bower-components/
 .idea/
 coverage/
 .coveralls.yml
