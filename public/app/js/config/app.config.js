@@ -1,10 +1,6 @@
-function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider, AppConstants) {
+function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider, AppConstants, toastrConfig) {
   'ngInject';
 
-  /*
-    If you don't want hashbang routing, uncomment this line.
-    Our tutorial will be using hashbang routing though :)
-  */
   // $locationProvider.html5Mode(true);
 
   $stateProvider
@@ -14,6 +10,17 @@ function AppConfig($httpProvider, $stateProvider, $locationProvider, $urlRouterP
   });
 
   $urlRouterProvider.otherwise('/');
+
+  angular.extend(toastrConfig, {
+    autoDismiss: false,
+    containerId: 'toast-container',
+    maxOpened: 0,
+    newestOnTop: true,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: false,
+    preventOpenDuplicates: false,
+    target: 'body'
+  });
 
 }
 

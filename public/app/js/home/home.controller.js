@@ -1,18 +1,17 @@
 class HomeCtrl {
-  constructor(AppConstants, Post, User, $window) {
+  constructor(AppConstants, Post, User, $window, toastr) {
     'ngInject';
 
     this.appName = AppConstants.appName;
     this._Post = Post;
     this._User = User;
     this._$window = $window;
-
-    //Read from service
-    //this.posts = this._Post.posts;
-    //this.posts = posts;
+    this._toastr = toastr;
 
     this.today = new Date();
     this.limit = 12;
+
+    this.isDisabled = false;
 
     this._Post.getAll().then(
       (posts) => {
@@ -52,29 +51,29 @@ class HomeCtrl {
         this.errors = err.data.errors;
       }
     );
-    // this.posts.push({
-    //   title: this.title,
-    //   link: this.link,
-    //   upvotes: 0,
-    //   comments: [
-    //     {author: 'Joe', body: 'Cool post!', upvotes: 0},
-    //     {author: 'Bob', body: 'Great idea but everything is wrong!', upvotes: 0}
-    //   ]
-    // });
+
     this.title = '';
     this.link = '';
   }
 
   incrementUpvotes(post) {
-    //post.upvotes += 1;
-    this._Post.upvote(post).then(
-      (res) => {
-        post.upvotes += 1;
-      },
-      (err) => {
-        this.errors = err.data.errors;
-      }
-    );
+
+    this.getUser();
+
+    if(this.current === post.author) {
+      this._toastr.error('You canot upvote your own post!');
+    } else {
+      this._Post.upvote(post).then(
+        (res) => {
+          post.upvotes += 1;
+          this.isDisabled = true;
+        },
+        (err) => {
+          this.errors = err.data.errors;
+        }
+      );
+    }
+
   }
 
 
