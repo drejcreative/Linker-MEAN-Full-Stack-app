@@ -43,7 +43,8 @@
               <span class="comment__main--time">{{comment.date | relativeDate }}</span>
             </div>
             <span class="comment__main--upvotes icon-thumbs-o-up"
-                  ng-click="$ctrl.incrementUpvotes(comment)">
+                  ng-click="$ctrl.isDisabled || $ctrl.incrementUpvotes(comment)"
+                  ng-disabled="$ctrl.isDisabled">
                   <span>{{comment.upvotes}}</span>
             </span>
           </div>

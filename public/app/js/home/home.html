@@ -44,7 +44,8 @@
            </div>
            <div class="main-post__footer">
              <span class="icon-thumbs-o-up main-post__footer--upvotes"
-                   ng-click="$ctrl.incrementUpvotes(post)">
+                   ng-click="$ctrl.isDisabled || $ctrl.incrementUpvotes(post)"
+                   ng-disabled="$ctrl.isDisabled">
                   {{post.upvotes}}
              </span>
              <a ui-sref="app.posts({ id: post._id })"

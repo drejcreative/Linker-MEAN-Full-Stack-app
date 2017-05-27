@@ -11,6 +11,8 @@ class HomeCtrl {
     this.today = new Date();
     this.limit = 12;
 
+    this.isDisabled = false;
+
     this._Post.getAll().then(
       (posts) => {
         this.posts = posts;
@@ -61,25 +63,17 @@ class HomeCtrl {
     if(this.current === post.author) {
       this._toastr.error('You canot upvote your own post!');
     } else {
-      console.log(post);
-      // this._Post.upvote(post).then(
-      //   (res) => {
-      //     post.upvotes += 1;
-      //   },
-      //   (err) => {
-      //     this.errors = err.data.errors;
-      //   }
-      // );
+      this._Post.upvote(post).then(
+        (res) => {
+          post.upvotes += 1;
+          this.isDisabled = true;
+        },
+        (err) => {
+          this.errors = err.data.errors;
+        }
+      );
     }
 
-    // this._Post.upvote(post).then(
-    //   (res) => {
-    //     post.upvotes += 1;
-    //   },
-    //   (err) => {
-    //     this.errors = err.data.errors;
-    //   }
-    // );
   }
 
 
